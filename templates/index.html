@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OIF Meeting</title><link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<main class="shell">
+<header class="topbar">
+<div class="brand"><div class="mark">OIF</div><div><b>MEETING</b><small>record · transcribe · send</small></div></div>
+<button id="settingsButton" class="ghost">設定</button>
+</header>
+
+<section class="hero"><p>OIF INTERNAL TOOL</p><h1>会議を、<br>止めた瞬間から記録へ。</h1>
+<span>録音終了後、話者分離・日本語文字起こし・Gmail送信まで自動処理します。</span></section>
+
+<section class="panel">
+<div class="modes"><button class="mode active" data-mode="inperson">対面</button><button class="mode" data-mode="discord">Discord</button></div>
+<div class="rec">
+<div id="dot" class="dot"></div><div id="status">READY</div><div id="timer">00:00:00</div>
+<button id="recordButton" class="primary">録音開始</button>
+</div>
+<div id="progress" class="hidden progress">高精度文字起こし・話者分離を実行しています…</div>
+<pre id="result" class="hidden result"></pre>
+</section>
+</main>
+
+<dialog id="settingsDialog">
+<form id="settingsForm">
+<div class="dialoghead"><h2>設定</h2><button type="button" id="closeSettings" class="ghost">閉じる</button></div>
+<label>送信先Gmail<input id="recipientEmail" type="email" required></label>
+<label>送信用Gmail<input id="senderEmail" type="email" required></label>
+<label>Gmailアプリパスワード<input id="gmailPassword" type="password" placeholder="設定済みなら空欄でOK"><small id="gmailState"></small></label>
+<label>Hugging Face token<input id="hfToken" type="password" placeholder="設定済みなら空欄でOK"><small id="hfState"></small></label>
+<div class="cols"><label>最小話者数<input id="minSpeakers" type="number" min="1" placeholder="自動"></label><label>最大話者数<input id="maxSpeakers" type="number" min="1" placeholder="自動"></label></div>
+<label>認識させたい専門用語<textarea id="hotwords" rows="4"></textarea><small>カンマ区切り。固有名詞・技術用語の補助に使います。</small></label>
+<button class="primary" type="submit">保存</button><p id="settingsMessage"></p>
+</form>
+</dialog>
+<script src="/static/app.js"></script>
+</body></html>
